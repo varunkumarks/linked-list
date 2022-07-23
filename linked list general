@@ -1,0 +1,117 @@
+#Linked list
+
+class Node:
+    def __init__(self,data):
+        self.data=data
+        self.next=None
+    
+class linkedlist:
+    def __init__(self):
+        self.head=None
+        
+        
+    def push(self,data):
+        new_node=Node(data)
+        new_node.next=self.head
+        self.head=new_node
+        return self.head
+    
+    def insertafter(self,head,n,data):
+        count=0
+        while head:
+            count=count+1
+            head=head.next
+            if count==n-1:
+                print(head)
+                temp=head
+                new_node=Node(data)
+                new_node.next=head.next
+                temp.next=new_node
+                
+        
+    def reverse(self,head):
+        prev = None
+        current = head
+        while current :
+            next = current.next
+            current.next = prev
+            prev = current
+            current = next
+        head = prev
+        return head
+             
+    def end(self,head,data):
+        temp=head
+        while head.next.next:
+            head=head.next
+        head.next=Node(data)
+        return temp                    
+            
+    def start(self,head,data):
+        new_node=Node(data)
+        new_node.next=head
+        head=new_node
+        return head
+        
+        
+    def loop(self,head):
+        current=None
+        prev=None
+        while current.next.next:
+            if current == prev :
+                print("loop")
+            else:
+                current=head.next.next
+                prev=head.next
+            
+
+            
+        
+    def remove_dup(self,head):
+        temp1=head
+        temp=head.next
+        while head:
+            while temp:
+                if head.data==temp.data :
+                    head.next=head.next.next
+                else:
+                    temp=temp.next
+            head=head.next
+            temp=head.next
+        return temp1
+        
+        
+		                
+    def printing(self,head):
+        while head:
+            print(head.data)
+            head=head.next               
+            
+            
+linklist=linkedlist()
+head=linklist.push(1)
+head=linklist.push(2)
+head=linklist.push(3)
+head=linklist.push(4)
+head=linklist.push(5)
+head=linklist.push(6)
+
+
+linklist.insertafter(head,3,10)
+
+head=linklist.reverse(head)
+
+
+head=linklist.end(head,100)
+
+
+head=linklist.start(head,100)
+
+linklist.remove_dup(head)
+
+linklist.printing(head)
+
+
+
+
+
